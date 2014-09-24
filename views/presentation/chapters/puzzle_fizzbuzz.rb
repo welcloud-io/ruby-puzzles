@@ -4,15 +4,29 @@ MIME_TYPE_PUZZLE =
 %Q{
 <div style="font-size: 0.55em">
 <p>
-Fizz Buzz is a game which helps children to learn and practice division.  
-Children sit in a circle and count numbers incrementally,  
-replacing multiple of 3 with Fizz and multiple of 5 with Buzz
+<h2>
+Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” 
+instead of the number and for the multiples of five print “Buzz”. 
+For numbers which are multiples of both three and five print “FizzBuzz”.
+</h2>
 </p>
 
-EXEMPLE :
 <p>
-An Example of Fizz Buzz Game:
+<h2>
+Ecrire un programme qui affiche les nombres de 1 à 100. Mais pour les multiples de trois 
+affichez "Fizz" à la place du nombre et pour les multiples de cinq affichez "Buzz".
+Pour les nombres qui sont à la fois multiples de trois et cinq, affichez "FizzBuzz".
+</h2>
+</p>
+
+
+<p>
+<h2>
+EXEMPLE :
+</br>
+</br>
 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, Fizz Buzz, 16, 17,..
+</h2>
 </p>
 
 </div>
@@ -51,7 +65,7 @@ class TestFizzBuzz < Test::Unit::TestCase
       2,
       "Fizz"
     ], 
-    FizzBuzz.new(1..3).list
+    FizzBuzz.new.evaluate(1..3)
   end
 
   def test02
@@ -61,7 +75,7 @@ class TestFizzBuzz < Test::Unit::TestCase
       "Fizz", 
       4, 
       "Buzz"], 
-    FizzBuzz.new(1..5).list
+    FizzBuzz.new.evaluate(1..5)
   end 
 
   def test03
@@ -81,7 +95,7 @@ class TestFizzBuzz < Test::Unit::TestCase
       13, 
       14, 
       "FizzBuzz"], 
-      FizzBuzz.new(1..15).list
+      FizzBuzz.new.evaluate(1..15)
   end   
 
 end
@@ -109,13 +123,19 @@ class TestFizzBuzz < Test::Unit::TestCase
       13, 
       14, 
       "FizzBuzz"], 
-      FizzBuzz.new(1..15).list
+      FizzBuzz.new.evaluate(1..15)
   end   
 
 end
 }
 
 $slides += [
+Slide.new(
+  :subtitle => "FIZZBUZZ", 
+  :section => [
+    "#{ MIME_TYPE_PUZZLE}"
+  ],
+),  
 Slide.new(
   :subtitle => "FIZZBUZZ TDD", 
   :section => [
