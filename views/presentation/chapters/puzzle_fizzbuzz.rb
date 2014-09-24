@@ -37,13 +37,13 @@ SOLUTION =
 class FizzBuzz
   def translate_number(number)
       if number.modulo(3) == 0 and number.modulo(5) == 0 then
-        return "FizzBuzz"
+        "FizzBuzz"
       elsif number.modulo(3) == 0 then 
-        return "Fizz" 
+        "Fizz" 
       elsif number.modulo(5) == 0 then
         "Buzz"
       else
-        return number 
+        number 
       end
   end
   
