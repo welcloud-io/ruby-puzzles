@@ -35,20 +35,21 @@ EXEMPLE :
 SOLUTION =
 %Q{
 class FizzBuzz
-  def initialize(list_range)
-    @list = list_range.to_a
+  def translate_number(number)
+      if number.modulo(3) == 0 and number.modulo(5) == 0 then
+        return "FizzBuzz"
+      elsif number.modulo(3) == 0 then 
+        return "Fizz" 
+      elsif number.modulo(5) == 0 then
+        "Buzz"
+      else
+        return number 
+      end
   end
-
-  def translate(number)
-    return "FizzBuzz" if number.modulo(3) == 0 and number.modulo(5) == 0
-    return "Fizz" if number.modulo(3) == 0
-    return "Buzz" if number.modulo(5) == 0
-    number
-  end
-
-  def list
-    @list.map do |number|
-      translate(number)
+  
+  def evaluate(range)
+    range.to_a.map do |number|
+      translate_number(number)
     end
   end
 end
@@ -137,14 +138,14 @@ Slide.new(
   ],
 ),  
 Slide.new(
-  :subtitle => "FIZZBUZZ TDD", 
+  :subtitle => "FIZZBUZZ TDD (One Step)", 
   :section => [
     "#{ MIME_TYPE_PUZZLE}"
   ],
   :code_to_add => TESTS_NIVEAU_2
 ),
 Slide.new(
-  :subtitle => "FIZZBUZZ TDD", 
+  :subtitle => "FIZZBUZZ TDD (Three Steps)", 
   :section => [
     "#{ MIME_TYPE_PUZZLE}"
   ],
