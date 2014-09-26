@@ -22,22 +22,22 @@ var BlackboardCodeSlide = function(node, slideshow) {
   this._updateResource = '/code_get_last_send_to_blackboard'
   this._attendeesLastSendResource = '/code_attendees_last_send';   
 
-  this._saveURL = "/code_save_blackboard_execution_context";  
+  this._localContext._saveURL = "/code_save_blackboard_execution_context";  
 };
 
 BlackboardCodeSlide.prototype = {
   
   _updateLastSendAttendeeName: function(slide_index) {
     this._serverExecutionContext.updateWithResource(this._attendeesLastSendResource);
-    this._editor._authorBar.updateLastSendAttendeeNameWith(this._serverExecutionContext.author);
+    this._authorBar.updateLastSendAttendeeNameWith(this._serverExecutionContext.author);
   },
 
   _update: function() {
     this._codeHelpers.update();
     this._serverExecutionContext.updateWithResource(this._updateResource);  
     if (this._editor.update()) {
-      this.run();  
-      this._editor._authorBar.updateAuthorNameWith(this._serverExecutionContext.author);
+      this.run();
+      this._authorBar.updateAuthorNameWith(this._serverExecutionContext.author);
     }
     this._updateLastSendAttendeeName();    
   },  

@@ -7,7 +7,18 @@ set :logging, false
 set :bind, '0.0.0.0'
 set :show_exceptions, false
 
-enable :sessions; set :session_secret, 'secret'
+if $unit_test then 
+	# We keep this for unit testing
+	# We have to think of a way to solve this
+	enable :sessions; set :session_secret, 'secret'
+else
+	# The code above does not seem to work with chrome (session disappears)
+	# It looks like the erb execution make the session dissapear with chrome
+	# We can replace it with this one :
+	use Rack::Session::Cookie, :key => 'rack.session',
+	                            :path => '/',
+	                            :secret => 'secret'
+end
 
 require_relative 'slideshow_helper'
 
